@@ -1,0 +1,71 @@
+body, html {
+    background: -webkit-linear-gradient(90deg, #76b852 10%, #8DC26F 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(90deg, #76b852 10%, #8DC26F 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(90deg, #76b852 10%, #8DC26F 90%); /* IE10 */
+    background:      -o-linear-gradient(90deg, #76b852 10%, #8DC26F 90%); /* Opera 11.10+ */
+    background:         linear-gradient(90deg, #76b852 10%, #8DC26F 90%); /* W3C */
+; text-align:center; padding:50px 0;}
+
+/* The CSS */
+select {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+    content:'<>';
+    font:11px "Consolas", monospace;
+    color:#aaa;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:8px; top:2px;
+    padding:0 0 2px;
+    border-bottom:1px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    background:#f8f8f8;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+
+ul{
+    margin:0;
+    padding:0 20px;
+}
+ul li {
+    text-align: right;
+    padding: 0;
+    width: 300px;
+    margin: 10px 0;
+    font-size: 20px;
+    font-family: Perpetua, Baskerville, Big Caslon, Palatino Linotype, Palatino, URW Palladio L, Nimbus Roman No9 L, serif
+}
