@@ -3,8 +3,7 @@
  */
 
 
-var app = angular.module('WeatherApp', []);
-
+var app = angular.module('WeatherApp', ['angular-loading-bar']);
 app.controller('WeatherController', ['$scope', '$http', function($scope, $http){
     $scope.text = 'wait...';
     $scope.station = '';
@@ -70,7 +69,7 @@ function get_values(heb, curr_observe, callback){
     var cnt = keys.length;
     console.log(keys);
     keys.forEach(function(key){
-        if(curr_observe.hasOwnProperty(key))
+        if(curr_observe.hasOwnProperty(key) && curr_observe[key][0])
         {
             result[heb[key] || key] = curr_observe[key][0];
         }

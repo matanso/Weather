@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <title>Weatherman</title>
     <script src="javascripts/angular.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
     <script src="javascripts/WeatherApp.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body ng-app="WeatherApp">
 <div ng-controller="WeatherController">
-    {{text}}
     <div ng-show="loaded">
-        <label dir="rtl">
-            תחנה:
-            <select style="text-align: right" ng-model="station" ng-change="change_station(station)">
-                <option></option>
-                <option ng-repeat="option in stations" ng-value="option">{{option}}</option>
+        <label>
+            <select ng-model="station" ng-change="change_station(station)">
+                <option value="" selected>Station</option>
+                <option ng-repeat="option in stations|orderBy:option" ng-value="option">{{option}}</option>
             </select>
+        </label>
             <br/>
-            זמן:
-            <select style="text-align: right" ng-model="time" ng-change="change_time(time)">
-                <option></option>
-                <option ng-repeat="time in times" ng-value="time">{{time}}</option>
+            <br/>
+        <label>
+            <select ng-model="time" ng-change="change_time(time)">
+                <option value="" selected>Time</option>
+                <option ng-repeat="time in times|orderBy:time" ng-value="time">{{time}}</option>
             </select>
         </label>
         <ul dir="rtl">
