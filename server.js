@@ -16,8 +16,8 @@ var DEPLOYMENT_URL = process.env.OPENSHIFT_NODEJS_IP;
 var DEVELOPMENT_URL = '127.0.0.1';
 var DEVELOPMENT_PORT = 5000;
 var DEPLOYMENT_PORT = process.env.OPENSHIFT_NODEJS_PORT;
-global.URL = (process.env.OPENSHIFT_NODEJS_IP) ? DEPLOYMENT_URL : DEVELOPMENT_URL;
-global.PORT = (process.env.OPENSHIFT_NODEJS_PORT) ? DEPLOYMENT_PORT : DEVELOPMENT_PORT;
+global.URL = DEPLOYMENT_URL || DEVELOPMENT_URL;
+global.PORT = DEPLOYMENT_PORT || DEVELOPMENT_PORT;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -58,8 +58,9 @@ app.use(function(err, req, res, next) {
     //res.sendfile('./public/error.html');
     next()
 });
+app.set('port', global.PORT);
+app.set('ip', global.URL);
 
-
-server.listen(global.PORT, 'localhost', function() {
+server.listen(global.PORT, global.URL, function() {
     console.log((new Date()) + ' Server is listening on port ' + global.PORT);
 });
