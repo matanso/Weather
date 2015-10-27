@@ -11,7 +11,13 @@ var bodyParser = require('body-parser');
 
 var app = express();
 var server = require('http').Server(app);
-// view engine setup
+
+var DEPLOYMENT_URL = process.env.OPENSHIFT_NODEJS_IP; //'http://front-stanga.rhcloud.com/';
+var DEVELOPMENT_URL = '127.0.0.1';
+var DEVELOPMENT_PORT = 8080;
+var DEPLOYMENT_PORT = process.env.OPENSHIFT_NODEJS_PORT;
+global.URL = (process.env.OPENSHIFT_NODEJS_IP) ? DEPLOYMENT_URL : DEVELOPMENT_URL;
+global.PORT = (process.env.OPENSHIFT_NODEJS_PORT) ? DEPLOYMENT_PORT : DEVELOPMENT_PORT;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -54,6 +60,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-server.listen(8080, 'localhost', function() {
-    console.log((new Date()) + ' Server is listening on port 8080');
+server.listen(global.PORT, 'localhost', function() {
+    console.log((new Date()) + ' Server is listening on port ' + global.PORT);
 });
