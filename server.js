@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var server = require('http').Server(app);
 
-var DEPLOYMENT_URL = process.env.OPENSHIFT_NODEJS_IP; //'http://front-stanga.rhcloud.com/';
+var DEPLOYMENT_URL = process.env.OPENSHIFT_NODEJS_IP;
 var DEVELOPMENT_URL = '127.0.0.1';
 var DEVELOPMENT_PORT = 8080;
 var DEPLOYMENT_PORT = process.env.OPENSHIFT_NODEJS_PORT;
